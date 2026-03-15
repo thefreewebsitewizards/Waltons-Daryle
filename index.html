@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#331200",
+              "outline": "#71787f",
+              "error": "#ba1a1a",
+              "surface-tint": "#296388",
+              "on-primary-fixed-variant": "#014b6e",
+              "on-primary-fixed": "#001e2f",
+              "on-surface": "#1e1b17",
+              "on-secondary": "#ffffff",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#763300",
+              "secondary-container": "#fcdab6",
+              "secondary-fixed-dim": "#e2c19e",
+              "outline-variant": "#c1c7cf",
+              "surface-container-low": "#faf2ea",
+              "on-secondary-fixed": "#291803",
+              "secondary": "#735a3e",
+              "surface-container": "#f4ede5",
+              "tertiary-fixed": "#ffdbc9",
+              "primary-fixed": "#c9e6ff",
+              "primary-container": "#004b6e",
+              "tertiary-container": "#753300",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e8e1da",
+              "on-primary-container": "#85bae3",
+              "on-surface-variant": "#41484e",
+              "inverse-primary": "#97cdf6",
+              "background": "#fff8f1",
+              "inverse-surface": "#33302b",
+              "tertiary-fixed-dim": "#ffb68d",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e8e1da",
+              "surface-bright": "#fff8f1",
+              "tertiary": "#522200",
+              "on-background": "#1e1b17",
+              "primary-fixed-dim": "#97cdf6",
+              "secondary-fixed": "#ffddb9",
+              "primary": "#00334d",
+              "surface-container-high": "#eee7df",
+              "on-tertiary-container": "#ff9c60",
+              "error-container": "#ffdad6",
+              "surface-dim": "#e0d9d1",
+              "on-secondary-container": "#775e41",
+              "on-error-container": "#93000a",
+              "surface": "#fff8f1",
+              "inverse-on-surface": "#f7f0e8",
+              "on-secondary-fixed-variant": "#594228"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Noto Serif', serif; }
+        .glass-nav {
+            background: rgba(255, 248, 241, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .text-shadow-sm {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 glass-nav bg-gradient-to-r from-primary/20 via-secondary-container/60 to-tertiary-fixed/40 border-b border-outline-variant/40 shadow-xl shadow-primary/20 ring-1 ring-primary/15">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<a class="text-primary font-headline text-xl font-bold tracking-tight flex items-center gap-3" href="#home">
+<img alt="Walton’s Wondrous Adventures logo" class="h-10 w-10 object-contain" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
+<span>Walton’s Wondrous Adventures</span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-3"><a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#destinations">Destinations</a>
+<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#cruises">Cruises</a>
+<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#group-travel">Group Travel</a>
+<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#weddings-honeymoons">Weddings/Honeymoons</a>
+<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#journey">Our Journey</a></div>
+<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-xl shadow-primary/30 ring-2 ring-primary/20 hover:ring-primary/40" href="#quote">
+                Plan Your Trip
+            </a>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-24" id="home">
+<div class="absolute inset-0 z-0">
+<img alt="Santorini landscape" class="w-full h-full object-cover" data-alt="Stunning white and blue buildings in Santorini at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABPz2zHlCBqScK1pQegwWn7VtKEEXFwjXZ8b-tm3MgOI6I8iIU2hS3y13xLewAbX7aarxKrQB7m_BCzqOpLXYgmv-nSNuwuIgkzHLxWAJ3mubqKoii7hE97QKpMlzYmVSLeJHKfu7LS81Rcs5bh2A25t6DsSh804BV-xLXChbYxI4etWecsYNhFI85xF29sSQj_lQJpqsDnRIpHTfiRkz_UArynQ7eswT7l_Vc7h3PwbytKZrVOP6-ESRWhP8u6scXFEe1BD78Cj8"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/20 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 w-full py-24">
+<div class="max-w-2xl">
+<span class="inline-block text-on-primary font-label tracking-widest text-sm mb-4 uppercase font-bold">Walton’s Wondrous Adventures</span>
+<h1 class="text-6xl md:text-8xl text-on-primary font-headline mb-8 leading-[1.1]">Explore the World in Wondrous Style</h1>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-tertiary-container transition-all" href="#quote">
+                        Plan Your Trip
+                    </a>
+<a class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-lowest transition-all" href="#quote">
+                        Get a Free Quote
+                    </a>
+<a class="text-on-primary border-2 border-on-primary/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-on-primary/10 transition-all backdrop-blur-sm" href="#destinations">
+                        Explore Destinations
+                    </a>
+</div>
+</div>
+</div>
+</header>
+<!-- Services Section (Bento Inspired) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">Our Expertise</span>
+<h2 class="text-4xl md:text-5xl mt-2 text-on-surface">We help you with</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Destinations Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-lowest p-8 flex flex-col justify-end transition-all hover:shadow-2xl hover:shadow-primary/5">
+<div class="absolute inset-0 z-0 opacity-10 group-hover:opacity-20 transition-opacity">
+<img alt="Adventure Travel" class="w-full h-full object-cover" data-alt="Boat sailing through a misty fjord" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6W_dOozoxhk5YCMkI8ssOZeOgfc3QETcC6VqyV93BAzkL0O3NRgh8S36i5yg2N_iDdcKTCS2GQ8xbfMFhBLb9El0duzXV8lCG7ZhweV0p2f0mFmtagEiKJyy8rYMZYNXuGEuBQHvnO5leXeyZRnX1blrVEXdHSBWz1RwEMnDrmuDwvZkJDKbP170PGe1iIGGaChM92g-gNlFv1lPYpFirUJfWtCdBhz-kUMJid26q81g2hqP7AOEMW7pmaL7qYNgjYQ9INOp9nhs"/>
+</div>
+<div class="relative z-10">
+<h3 class="text-3xl font-headline mb-2">Destinations</h3>
+<p class="text-on-surface-variant max-w-md">Curated paths to the globe's most breathtaking hidden gems and cultural landmarks.</p>
+</div>
+</div>
+<!-- All-Inclusive Card -->
+<div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">beach_access</span>
+<div>
+<h3 class="text-2xl font-headline mb-2">All-Inclusive</h3>
+<p class="text-on-primary-container/80">Worry-free luxury where every detail, from dining to excursions, is perfectly arranged.</p>
+</div>
+</div>
+<!-- Group Travel -->
+<div class="md:col-span-5 bg-secondary-container p-8 rounded-xl flex flex-col justify-between group cursor-pointer scroll-mt-24 service-detail-card" id="group-travel" data-title="Group Travel" data-tagline="Big moments feel better when everyone is together." data-details="From family reunions to milestone trips, we coordinate flights, lodging, and shared experiences so your group can focus on the fun. Expect curated options, flexible schedules, and clear communication every step of the way." data-images="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=900&q=80">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container">groups</span>
+<span class="material-symbols-outlined text-2xl opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</div>
+<h3 class="text-2xl font-headline text-on-secondary-container">Group Travel</h3>
+<p class="text-on-secondary-container/90 mt-3">Reunions, milestone birthdays, retreats, and multi‑family getaways planned with coordinated bookings, shared experiences, and flexible pacing.</p>
+</div>
+<!-- Weddings & Honeymoons -->
+<div class="md:col-span-7 bg-surface-container-highest p-8 rounded-xl flex flex-col justify-center relative overflow-hidden group scroll-mt-24 service-detail-card" id="weddings-honeymoons" data-title="Weddings & Honeymoons" data-tagline="Celebrate love in a destination as unforgettable as your story." data-details="We handle venues, guest logistics, and romantic details so your only job is to enjoy the moment. From beachfront vows to city‑chic escapes, every element is designed around your vision." data-images="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80">
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-20 group-hover:opacity-40 transition-opacity">
+<img alt="Wedding" class="w-full h-full object-cover" data-alt="Floral arrangements at an outdoor wedding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArQKe4rTTr_MOOLZflymyYbxT2g8ncBXu4wurudhA-s_dC8yjFCQN5CxmEPoTI98a7P9HqB38vH6qBm-V2qJHUdpRULDE3t-l_eREPW5kiNWiKeHVhpUbFk1JyQVwm2oFxcOo0YA9bJx_Gg60KO5AnI4QHovGEMlm7JT01imtprxVsM6UOjas0A3_3xF-ldti4gZfHbSyKNWezKvwJqWm8iEPxIUgdoDU97471wIFlb0wiEfclE4pJYI6l5MqffHiEGBOpiIjIvXU"/>
+</div>
+<div class="relative z-10">
+<h3 class="text-3xl font-headline text-on-surface mb-2">Weddings &amp; Honeymoons</h3>
+<p class="text-on-surface-variant max-w-sm">Begin your journey together in the world's most romantic settings.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Icons Section -->
+<section class="py-20 bg-surface scroll-mt-24" id="cruises">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary-fixed text-3xl">directions_boat</span>
+</div>
+<h4 class="font-headline text-xl mb-2">Cruise Vacations</h4>
+<p class="text-sm text-on-surface-variant font-body">Ocean &amp; River Adventures</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-secondary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary-fixed text-3xl">family_restroom</span>
+</div>
+<h4 class="font-headline text-xl mb-2">Family Travel</h4>
+<p class="text-sm text-on-surface-variant font-body">Memories for All Ages</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-tertiary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">favorite</span>
+</div>
+<h4 class="font-headline text-xl mb-2">Destination Weddings</h4>
+<p class="text-sm text-on-surface-variant font-body">Say 'I Do' Anywhere</p>
+</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+</div>
+<h4 class="font-headline text-xl mb-2">International Adventures</h4>
+<p class="text-sm text-on-surface-variant font-body">Beyond the Horizon</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Destinations -->
+<section class="py-24 bg-surface-container scroll-mt-24" id="destinations">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">Inspiration</span>
+<h2 class="text-4xl md:text-5xl mt-2">Popular Destinations</h2>
+</div>
+<a class="hidden md:flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#all-destinations">
+                    View All Destinations <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<!-- Hawaii -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Hawaii" data-tagline="Sun-kissed escapes with ocean breezes and unforgettable sunsets." data-details="From sunrise beach walks to island luaus, Hawaii blends adventure and relaxation in one iconic paradise." data-images="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
+<img alt="Hawaii" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Aerial view of tropical Hawaiian coastline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVympn-HPe4a7QR7bzBhJjzBQ1KG1QWjk_PiNxRhyIQ_vYAqFJEVv-MEdsh13AqkorYYd5H7NLNkoExttH1RygAq7bRy8sXMvO92mgc2_xeirY5sWE9hqlLzAf-7Sk7nlWFyKok3L4mzp65iFFvDdI9sK6HHFjH383Zd36841KwJEM9OrbFn6pnoPpqLOt56-6T8PprIcNgQFAQTRm23uvla_sxYtQIFvF3hyi_S3ZfnNmlsHljMxiuGK0jfcI8yVUnpjLud547EE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Hawaii</span>
+</div>
+<!-- Alaska -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Alaska" data-tagline="Glacier air, wild coastlines, and awe-inspiring wildlife." data-details="Cruise through icy fjords, spot bald eagles, and soak in the stillness of the last frontier." data-images="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80">
+<img alt="Alaska" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Icy mountains and glaciers in Alaska" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwTBMj8D4LFJuJDFnYzgSFHopjxoUy1LCs6cvSazQvGracyL4MUv-rQ1108NgU6Infbt1ol2BjJ0DuAY3fhIqLCanvZhjTExcyY2tpXTNe8YPAaicxVfsZ2afurMj_AfLH0wIKETycYrbz36ovVRzigUuR3Rh4640xM5yydEHdh_ySYaRqNR6JnJmwwDECtgbYq-x6Ahq0DcVvYC2Apr1lVYOgKR6iaqZ7j_MSxO-iyg-1M3MsbAnC9YvdAS18fO-m4gialfyUymw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Alaska</span>
+</div>
+<!-- Cancun -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Cancún" data-tagline="Turquoise waters and all‑inclusive ease." data-details="Swap the schedule for sunshine, beachside dining, and carefree days in a resort made for unwinding." data-images="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
+<img alt="Cancun" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Turquoise water and white sand beach in Cancun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjoFOBQmuvVSohHXQXNH9gfsOsyJzMvlJF1yydq21eNxhPPXeEdqWvvbhSZqu42yIKdUvMP8sgPQRfgXKja0xtbTiCum1bTf86TcEvREEPKpe-kegXBrfSA9dxBkx6GTlb1q3cigSjT7Qn0-7MN9Zsx_jhWM2lCh6S2n4QmnVg2b5kI7oEqcW-CTS2lkaL1pEDgcqIxp9eOus0f7RVz_mgYjPLpNygazt4Vh9x9IK8dbA6m59qFBvtURNSime9sJQA-ol58u7S5KI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Cancún</span>
+</div>
+<!-- Orlando -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Orlando" data-tagline="Theme‑park thrills with sunny vibes." data-details="Perfect for families and friends looking to mix adventure, entertainment, and warm Florida days." data-images="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80">
+<img alt="Orlando" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Theme park castle in Orlando" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAeImTbsSZfaw8hjm44ETsMp-RU-sg3E3Z22Eh94wZyTqndHdWwyZkwXzQj-gS1VO6bdA3mMcGoIypUhBYBd73yyA6quGos1WMv9EC2vMNi5eiSnS0wumZegH_yQZ8XM4S2TAv1eBIwiG6SEPjGyOAXsUTij-JlAry2p_5bTmnstDpKXRbTDvTnB09IT0FmWAAIjJruCZM6Tok-vnOHrPpfIwtgZpj4RbA409aV7oTl4T5T-1bX_E3rmXirsqV48qiAAob-fqg4p8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Orlando</span>
+</div>
+<!-- Italy -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Italy" data-tagline="Romance, history, and unforgettable cuisine." data-details="Sip espresso in Florence, glide through Venice, and dine beneath the glow of centuries‑old streets." data-images="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
+<img alt="Italy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Venice canal with gondolas in Italy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX-ykylpjz62OfPRuj4ffcevS-mSmPZOrNlmYLRbaTZs-N3YmCWkUzuHxCG4yG37LIBX6o3Wq2UUKEgFlwTxAE4EFgM0TE5iV3LkA1DuHzhqMYZiAUeTWcX_gdV_xmwT1tTG0d9-q3RoN81pyAOxXcV8Jvvu8v5VBP3PowLMkLAbyUnWXnJCfmI0CxsllXxF4p_uqN2oEho0ETXsSgaNkBsoAd6yTMkyxBPdrlMFKTGkLGpftko5XL7gyGslut5nikKtiHzyGLSgs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Italy</span>
+</div>
+<!-- Jamaica -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Jamaica" data-tagline="Laid‑back rhythm with crystal‑clear shores." data-details="From reggae nights to waterfall hikes, Jamaica blends culture, flavor, and easygoing luxury." data-images="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
+<img alt="Jamaica" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Palm trees overhanging Jamaican coastline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWyz3Pyiwm0NRBTFfdebE5MRvMLTi1b3tO6pqEUpkawvW7OhenTR2jWK1N3Z0GeZXFL6DH-6gb-CT5H0ODRPY-ImxXzmzNCDqaPfNLdplRA7rX5V3S14_7JSy7PqRM_2L_sktM5Fziwzu98gwCCX9y-JkPv3l2di9lCLQr9hqFWDbfKVOoY6vU43MsiJVcXBjiIa--sp_DnuJJSOi7-FvQHpYlM7MdKvKkiJ2CqhA-HRXGncyR71YWuQL8rlJBIoZUX-Fjt74bahc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Jamaica</span>
+</div>
+</div>
+</div>
+</section>
+<div class="fixed inset-0 z-[60] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm" id="destination-modal" aria-hidden="true">
+<div class="bg-surface-container-lowest text-on-surface max-w-2xl w-[92%] rounded-2xl shadow-2xl border border-outline-variant/20">
+<div class="flex flex-col gap-4 p-6 border-b border-outline-variant/20 sm:flex-row sm:items-start sm:justify-between">
+<div>
+<p class="text-surface-tint font-label uppercase tracking-widest text-xs font-bold">Featured Destination</p>
+<h3 class="text-3xl font-headline mt-2" id="destination-title"></h3>
+<p class="text-sm text-on-surface-variant mt-1" id="destination-count"></p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors" id="destination-prev" type="button" aria-label="Previous destination">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors" id="destination-next" type="button" aria-label="Next destination">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors" id="destination-close" type="button" aria-label="Close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<p class="text-lg text-on-surface font-medium" id="destination-tagline"></p>
+<p class="text-on-surface-variant leading-relaxed" id="destination-details"></p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="destination-gallery"></div>
+<div class="flex flex-wrap gap-4 pt-2">
+<a class="bg-primary text-on-primary px-6 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-lg shadow-primary/20" href="#quote">Plan This Trip</a>
+<a class="px-6 py-3 rounded-full font-semibold border border-outline-variant/40 hover:border-primary/40 hover:text-primary transition-colors" href="#quote">Get a Free Quote</a>
+</div>
+</div>
+</div>
+</div>
+<section class="py-24 bg-surface scroll-mt-24" id="all-destinations">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-12">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">All Destinations</span>
+<h2 class="text-4xl md:text-5xl mt-2 font-headline">Explore Every Escape</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="destinations-overview-list"></div>
+</div>
+</section>
+<div class="fixed inset-0 z-[60] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm" id="service-modal" aria-hidden="true">
+<div class="bg-surface-container-lowest text-on-surface max-w-2xl w-[92%] rounded-2xl shadow-2xl border border-outline-variant/20">
+<div class="flex items-start justify-between p-6 border-b border-outline-variant/20">
+<div>
+<p class="text-surface-tint font-label uppercase tracking-widest text-xs font-bold">Featured Experience</p>
+<h3 class="text-3xl font-headline mt-2" id="service-title"></h3>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-container-high transition-colors" id="service-close" type="button" aria-label="Close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<p class="text-lg text-on-surface font-medium" id="service-tagline"></p>
+<p class="text-on-surface-variant leading-relaxed" id="service-details"></p>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="service-gallery"></div>
+<div class="flex flex-wrap gap-4 pt-2">
+<a class="bg-primary text-on-primary px-6 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-lg shadow-primary/20" href="#quote">Plan This Experience</a>
+<a class="px-6 py-3 rounded-full font-semibold border border-outline-variant/40 hover:border-primary/40 hover:text-primary transition-colors" href="#quote">Get a Free Quote</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Why Book With Us -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-headline mb-4">Why Book With Us</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Travel is about the experience, and we ensure yours is flawless from takeoff to touchdown.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">person_heart</span>
+<h5 class="font-headline text-lg mb-2">Personalized Service</h5>
+<p class="text-sm text-on-surface-variant">Tailored itineraries just for you.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">travel_explore</span>
+<h5 class="font-headline text-lg mb-2">Expert Planning</h5>
+<p class="text-sm text-on-surface-variant">Decades of insider travel knowledge.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">spa</span>
+<h5 class="font-headline text-lg mb-2">Stress-Free Booking</h5>
+<p class="text-sm text-on-surface-variant">We handle all the complex logistics.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">support_agent</span>
+<h5 class="font-headline text-lg mb-2">24/7 Support</h5>
+<p class="text-sm text-on-surface-variant">We're with you, wherever you are.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">sell</span>
+<h5 class="font-headline text-lg mb-2">Exclusive Deals</h5>
+<p class="text-sm text-on-surface-variant">Access to rates you won't find online.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Lead Capture Section -->
+<section class="py-24 bg-primary text-on-primary scroll-mt-24" id="quote">
+<div class="max-w-5xl mx-auto px-6">
+<div class="bg-surface-container-lowest/5 backdrop-blur-md p-10 md:p-16 rounded-xl border border-on-primary/10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl font-headline mb-6">Ready to Plan Your Dream Vacation?</h2>
+<p class="text-on-primary-container text-lg leading-relaxed">Let's turn your travel dreams into a reality. Our experts are ready to curate your perfect escape.</p>
+</div>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input class="w-full bg-on-primary/10 border-none rounded-lg p-4 text-on-primary placeholder:text-on-primary/50 focus:ring-2 focus:ring-secondary-container" placeholder="Name" type="text"/>
+<input class="w-full bg-on-primary/10 border-none rounded-lg p-4 text-on-primary placeholder:text-on-primary/50 focus:ring-2 focus:ring-secondary-container" placeholder="Email" type="email"/>
+</div>
+<input class="w-full bg-on-primary/10 border-none rounded-lg p-4 text-on-primary placeholder:text-on-primary/50 focus:ring-2 focus:ring-secondary-container" placeholder="Destination Interest" type="text"/>
+<input class="w-full bg-on-primary/10 border-none rounded-lg p-4 text-on-primary placeholder:text-on-primary/50 focus:ring-2 focus:ring-secondary-container" placeholder="Travel Dates (e.g., Summer 2024)" type="text"/>
+<button class="w-full bg-tertiary-container text-on-tertiary py-4 rounded-full font-bold text-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-xl" type="button">
+                            Get a Free Consultation
+                        </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface scroll-mt-24" id="journey">
+<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-4xl">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">Our Journey</span>
+<h2 class="text-4xl md:text-5xl mt-2 font-headline">From First Trip to Wondrous Adventures</h2>
+<p class="text-on-surface-variant mt-6 leading-relaxed">Walton’s Wondrous Adventures is built around one idea: your trip should feel effortless, personal, and unforgettable. We plan with intention, recommend with honesty, and handle the details so you can focus on the experience.</p>
+<div class="mt-8 space-y-5 leading-relaxed">
+<p class="text-on-surface font-medium">My name is Daryle Walton. I am a travel agent, as well as a licensed insurance agent.</p>
+<p class="text-on-surface-variant">I worked hard to graduate college. I worked hard to serve this great nation’s military. I will work hard for you.</p>
+<p class="text-on-surface-variant">The first thing you notice is the light.</p>
+<p class="text-on-surface-variant">Maybe it’s the golden sunrise stretching across the turquoise waters of Hawaii. Or the crisp, glacier-kissed air in Alaska as a bald eagle glides overhead. Perhaps it’s the quiet magic of drifting through the canals of Venice, where history whispers from every stone.</p>
+<p class="text-on-surface-variant">Travel has a way of awakening something in us.</p>
+<p class="text-on-surface-variant">It begins as a simple idea — a beach escape, a family adventure, a long-awaited honeymoon — but it becomes so much more. It becomes the laughter shared on a sunset cruise departing from Miami. It becomes toes in the sand in Cancún, where the sea seems to stretch endlessly into possibility. It becomes standing in awe beneath the ancient glow of the Colosseum, imagining the stories carried through centuries.</p>
+<p class="text-on-surface-variant">Travel changes us.</p>
+<div class="space-y-2 text-on-surface-variant font-medium">
+<div>It reconnects families.</div>
+<div>It celebrates love.</div>
+<div>It turns milestones into memories.</div>
+</div>
+<p class="text-on-surface-variant">For some, it’s the thrill of sailing across open waters with world-class dining and entertainment. For others, it’s an all-inclusive retreat where the only decision is whether to relax by the pool or walk along the shoreline at sunset. And for couples beginning a new chapter, it’s the romance of discovering somewhere new together — hand in hand, hearts wide open.</p>
+<p class="text-on-surface-variant">The beauty of travel isn’t just in the destination.</p>
+<p class="text-on-surface-variant">It’s in the anticipation. The planning. The dream taking shape.</p>
+<p class="text-on-surface-variant">Every journey tells a story — of discovery, of connection, of wonder. From the vibrant streets of Paris to the lush rainforests of Costa Rica, each experience adds a new chapter to your personal adventure.</p>
+<p class="text-on-surface-variant">And when you return home, suitcase a little heavier and heart completely full, you realize something important:</p>
+<div class="space-y-2 text-on-surface font-medium">
+<div>You didn’t just take a trip.</div>
+<div>You created a memory that will last a lifetime.</div>
+</div>
+<p class="text-on-surface font-medium">Where will your story begin?</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface-container-high scroll-mt-24" id="journey-highlights">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-12">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">How We Work</span>
+<h2 class="text-3xl md:text-4xl mt-2 font-headline">The Support Behind Every Journey</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline text-xl mb-2">Thoughtful Planning</h3>
+<p class="text-sm text-on-surface-variant">Clear options, smart routing, and the right pace for your travel style.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline text-xl mb-2">Trusted Partners</h3>
+<p class="text-sm text-on-surface-variant">Curated resorts, cruise lines, and local guides we’re confident in.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline text-xl mb-2">Details Managed</h3>
+<p class="text-sm text-on-surface-variant">Transfers, timing, and contingencies organized end-to-end.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="font-headline text-xl mb-2">Support That Stays</h3>
+<p class="text-sm text-on-surface-variant">We’re available before, during, and after you travel.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface scroll-mt-24" id="travel-tips">
+<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-3xl">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">Travel Tips</span>
+<h2 class="text-4xl md:text-5xl mt-2 font-headline">Essential Tips for a Smoother Journey</h2>
+<p class="text-on-surface-variant mt-6 leading-relaxed">Here are 15 essential travel tips to enhance your journey. As it is not possible for me to cover every situation or even be all-inclusive, it would be wise to “Google” you own specific situation and prepare wisely.</p>
+</div>
+<div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="text-2xl font-headline mb-4">Pack Smart</h3>
+<ul class="space-y-3 text-on-surface-variant">
+<li>Use a small backpack or suitcase to limit what you carry.</li>
+<li>Always pack a towel; it’s versatile for various situations.</li>
+<li>Write a packing list, then cut it in half to avoid overpacking.</li>
+<li>Bring extra socks to account for laundry mishaps and wear.</li>
+</ul>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="text-2xl font-headline mb-4">Plan Ahead</h3>
+<ul class="space-y-3 text-on-surface-variant">
+<li>Set a budget and stick to it to avoid overspending.</li>
+<li>Research off-season travel deals to save money.</li>
+<li>Book accommodations and transport in advance for better rates.</li>
+</ul>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
+<h3 class="text-2xl font-headline mb-4">Stay Safe</h3>
+<ul class="space-y-3 text-on-surface-variant">
+<li>Keep copies of important documents in case of loss.</li>
+<li>Use a money belt or hidden pouch for valuables.</li>
+</ul>
+<h3 class="text-2xl font-headline mt-8 mb-4">Enjoy the Experience</h3>
+<ul class="space-y-3 text-on-surface-variant">
+<li>Embrace local culture and try new foods.</li>
+<li>Stay flexible with your itinerary to explore unexpected opportunities.</li>
+</ul>
+</div>
+</div>
+<p class="text-on-surface-variant mt-10 leading-relaxed">These tips can help make your travels smoother and more enjoyable, whether you're a seasoned traveler or a novice.</p>
+</div>
+</section>
+<section class="py-24 bg-surface-container-low scroll-mt-24" id="resources">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">Resources</span>
+<h2 class="text-4xl md:text-5xl mt-2">Helpful Information</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm scroll-mt-24" id="email-signup">
+<h3 class="text-2xl font-headline mb-3">Email Signup</h3>
+<p class="text-on-surface-variant">Join our list for destination inspiration, seasonal deals, and planning tips. Use the form in the free consultation section to get started.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold mt-6 hover:gap-4 transition-all" href="#quote">Go to Signup <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm scroll-mt-24" id="credentials">
+<h3 class="text-2xl font-headline mb-3">Business Credentials</h3>
+<p class="text-on-surface-variant">We work with reputable suppliers and protect your travel investment with best-practice booking and documentation. Ask us about preferred partners and available travel protection options during your consultation.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold mt-6 hover:gap-4 transition-all" href="#quote">Request Details <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm scroll-mt-24" id="privacy-policy">
+<h3 class="text-2xl font-headline mb-3">Privacy Policy</h3>
+<p class="text-on-surface-variant">We only use your contact details to respond to your inquiry and to provide trip planning support. We don’t sell personal information. You can request updates or deletion of your data by emailing us.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold mt-6 hover:gap-4 transition-all" href="#contact">Contact Us <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm scroll-mt-24" id="terms">
+<h3 class="text-2xl font-headline mb-3">Terms of Service</h3>
+<p class="text-on-surface-variant">Trip pricing and availability can change until booked. Supplier terms apply to air, cruise, hotels, and tours. We’ll confirm deadlines, deposits, and cancellation policies before you pay.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold mt-6 hover:gap-4 transition-all" href="#quote">Start Planning <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<div class="mt-12 p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm scroll-mt-24" id="sitemap">
+<h3 class="text-2xl font-headline mb-3">Sitemap</h3>
+<div class="flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#home">Home</a>
+<a class="hover:text-primary transition-colors" href="#destinations">Destinations</a>
+<a class="hover:text-primary transition-colors" href="#cruises">Cruises</a>
+<a class="hover:text-primary transition-colors" href="#group-travel">Group Travel</a>
+<a class="hover:text-primary transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a>
+<a class="hover:text-primary transition-colors" href="#journey">Our Journey</a>
+<a class="hover:text-primary transition-colors" href="#quote">Free Quote</a>
+<a class="hover:text-primary transition-colors" href="#resources">Resources</a>
+<a class="hover:text-primary transition-colors" href="#contact">Contact</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-highest pt-20 pb-10 border-t border-outline-variant/30 scroll-mt-24" id="contact">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="md:col-span-1">
+<h3 class="text-2xl font-headline mb-6">Walton’s Wondrous Adventures</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Expertly curated travel experiences for the modern explorer.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="https://www.facebook.com/profile.php?id=61555037826175">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Explore</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" href="#destinations">Destinations</a></li>
+<li><a class="hover:text-primary transition-colors" href="#cruises">Cruises</a></li>
+<li><a class="hover:text-primary transition-colors" href="#group-travel">Group Travel</a></li>
+<li><a class="hover:text-primary transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a></li>
+<li><a class="hover:text-primary transition-colors" href="#journey">Our Journey</a></li></ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Resources</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#email-signup">Email Signup</a></li>
+<li><a class="hover:text-primary transition-colors" href="#credentials">Business Credentials</a></li>
+<li><a class="hover:text-primary transition-colors" href="#privacy-policy">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#contact">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Contact</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg">mail</span>
+                            info@waltonswondrous.com
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg">phone</span>
+                            +1 (555) 123-4567
+                        </li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant font-medium">
+<span>© 2024 Walton’s Wondrous Adventures. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="hover:text-primary" href="#terms">Terms of Service</a>
+<a class="hover:text-primary" href="#sitemap">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+      const destinationCards = document.querySelectorAll(".destination-card");
+      const destinationModal = document.getElementById("destination-modal");
+      const destinationTitle = document.getElementById("destination-title");
+      const destinationTagline = document.getElementById("destination-tagline");
+      const destinationDetails = document.getElementById("destination-details");
+      const destinationClose = document.getElementById("destination-close");
+      const destinationGallery = document.getElementById("destination-gallery");
+      const destinationCount = document.getElementById("destination-count");
+      const destinationPrev = document.getElementById("destination-prev");
+      const destinationNext = document.getElementById("destination-next");
+      const destinationsOverviewList = document.getElementById("destinations-overview-list");
+      const serviceCards = document.querySelectorAll(".service-detail-card");
+      const serviceModal = document.getElementById("service-modal");
+      const serviceTitle = document.getElementById("service-title");
+      const serviceTagline = document.getElementById("service-tagline");
+      const serviceDetails = document.getElementById("service-details");
+      const serviceGallery = document.getElementById("service-gallery");
+      const serviceClose = document.getElementById("service-close");
+      let destinationIndex = 0;
+
+      const openDestination = (card) => {
+        destinationTitle.textContent = card.dataset.title || "";
+        destinationTagline.textContent = card.dataset.tagline || "";
+        destinationDetails.textContent = card.dataset.details || "";
+        destinationGallery.innerHTML = "";
+        const images = (card.dataset.images || "").split("|").filter(Boolean);
+        if (images.length) {
+          destinationGallery.classList.remove("hidden");
+          images.forEach((url) => {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = `${destinationTitle.textContent} photo`;
+            img.className = "w-full h-24 sm:h-28 md:h-32 object-cover rounded-lg";
+            destinationGallery.appendChild(img);
+          });
+        } else {
+          destinationGallery.classList.add("hidden");
+        }
+        destinationCount.textContent = `${destinationIndex + 1} of ${destinationCards.length}`;
+        destinationModal.classList.remove("hidden");
+        destinationModal.classList.add("flex");
+        destinationModal.setAttribute("aria-hidden", "false");
+      };
+
+      const closeDestination = () => {
+        destinationModal.classList.add("hidden");
+        destinationModal.classList.remove("flex");
+        destinationModal.setAttribute("aria-hidden", "true");
+      };
+
+      const renderDestinationsOverview = () => {
+        destinationsOverviewList.innerHTML = "";
+        destinationCards.forEach((card, index) => {
+          const container = document.createElement("div");
+          container.className = "bg-surface-container-highest rounded-xl p-5 border border-outline-variant/10 flex flex-col gap-4";
+
+          const header = document.createElement("div");
+          header.innerHTML = `<h4 class="text-xl font-headline">${card.dataset.title || ""}</h4><p class="text-sm text-on-surface-variant mt-1">${card.dataset.tagline || ""}</p>`;
+
+          const details = document.createElement("p");
+          details.className = "text-sm text-on-surface-variant leading-relaxed";
+          details.textContent = card.dataset.details || "";
+
+          const gallery = document.createElement("div");
+          gallery.className = "grid grid-cols-3 gap-2";
+          const images = (card.dataset.images || "").split("|").filter(Boolean).slice(0, 3);
+          images.forEach((url) => {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = `${card.dataset.title || "Destination"} photo`;
+            img.className = "w-full h-20 object-cover rounded-lg";
+            gallery.appendChild(img);
+          });
+
+          const actions = document.createElement("div");
+          actions.className = "pt-2";
+          const viewButton = document.createElement("button");
+          viewButton.type = "button";
+          viewButton.className = "text-primary font-semibold hover:text-tertiary-container transition-colors";
+          viewButton.textContent = "View details";
+          viewButton.addEventListener("click", () => openDestinationAt(index));
+          actions.appendChild(viewButton);
+
+          container.appendChild(header);
+          container.appendChild(details);
+          if (images.length) {
+            container.appendChild(gallery);
+          }
+          container.appendChild(actions);
+          destinationsOverviewList.appendChild(container);
+        });
+      };
+
+      const openService = (card) => {
+        serviceTitle.textContent = card.dataset.title || "";
+        serviceTagline.textContent = card.dataset.tagline || "";
+        serviceDetails.textContent = card.dataset.details || "";
+        serviceGallery.innerHTML = "";
+        const images = (card.dataset.images || "").split("|").filter(Boolean);
+        if (images.length) {
+          serviceGallery.classList.remove("hidden");
+          images.forEach((url) => {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = `${serviceTitle.textContent} photo`;
+            img.className = "w-full h-24 sm:h-28 md:h-32 object-cover rounded-lg";
+            serviceGallery.appendChild(img);
+          });
+        } else {
+          serviceGallery.classList.add("hidden");
+        }
+        serviceModal.classList.remove("hidden");
+        serviceModal.classList.add("flex");
+        serviceModal.setAttribute("aria-hidden", "false");
+      };
+
+      const closeService = () => {
+        serviceModal.classList.add("hidden");
+        serviceModal.classList.remove("flex");
+        serviceModal.setAttribute("aria-hidden", "true");
+      };
+
+      const openDestinationAt = (index) => {
+        const total = destinationCards.length;
+        if (!total) {
+          return;
+        }
+        destinationIndex = (index + total) % total;
+        openDestination(destinationCards[destinationIndex]);
+      };
+
+      destinationCards.forEach((card, index) => {
+        card.addEventListener("click", () => openDestinationAt(index));
+      });
+
+      destinationClose.addEventListener("click", closeDestination);
+      destinationPrev.addEventListener("click", () => openDestinationAt(destinationIndex - 1));
+      destinationNext.addEventListener("click", () => openDestinationAt(destinationIndex + 1));
+      destinationModal.addEventListener("click", (event) => {
+        if (event.target === destinationModal) {
+          closeDestination();
+        }
+      });
+      serviceCards.forEach((card) => {
+        card.addEventListener("click", () => openService(card));
+      });
+      serviceClose.addEventListener("click", closeService);
+      serviceModal.addEventListener("click", (event) => {
+        if (event.target === serviceModal) {
+          closeService();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && destinationModal.getAttribute("aria-hidden") === "false") {
+          closeDestination();
+        }
+        if (event.key === "Escape" && serviceModal.getAttribute("aria-hidden") === "false") {
+          closeService();
+        }
+      });
+      renderDestinationsOverview();
+</script>
+</body></html>
+echo "# Waltons-Daryle" >> README.md
+git init
+git add README.md
