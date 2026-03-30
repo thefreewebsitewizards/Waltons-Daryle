@@ -3,6 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="Images/Walton%27s%20wondrous%20adventure%20logo.png" rel="icon" type="image/png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -92,21 +93,45 @@
 <nav class="fixed top-0 w-full z-50 glass-nav bg-gradient-to-r from-primary/20 via-secondary-container/60 to-tertiary-fixed/40 border-b border-outline-variant/40 shadow-xl shadow-primary/20 ring-1 ring-primary/15">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 <div class="flex items-center gap-2">
-<a class="text-primary font-headline text-xl font-bold tracking-tight flex items-center gap-3" href="#home">
-<img alt="Walton’s Wondrous Adventures logo" class="h-10 w-10 object-contain" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
-<span>Walton’s Wondrous Adventures</span>
+<a class="group text-primary font-headline text-xl font-bold tracking-tight flex items-center gap-3" href="#home" id="logo-trigger">
+<img alt="Walton’s Wondrous Adventures logo" class="h-20 w-full object-contain cursor-zoom-in transition-transform duration-200 ease-out group-hover:scale-110 group-active:scale-110 group-focus-visible:scale-110" id="logo-image" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
+<!-- <span>Walton’s Wondrous Adventures</span> -->
 </a>
 </div>
 <div class="hidden md:flex items-center gap-3"><a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#destinations">Destinations</a>
 <a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#cruises">Cruises</a>
+<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#tickets-events">Tickets</a>
 <a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#group-travel">Group Travel</a>
 <a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#weddings-honeymoons">Weddings/Honeymoons</a>
 <a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#journey">Our Journey</a></div>
-<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-xl shadow-primary/30 ring-2 ring-primary/20 hover:ring-primary/40" href="#quote">
+<button class="md:hidden w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary/20 transition-colors" id="mobile-menu-open" type="button" aria-label="Open navigation menu">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-xl shadow-primary/30 ring-2 ring-primary/20 hover:ring-primary/40" href="#quote">
                 Plan Your Trip
             </a>
 </div>
 </nav>
+<div class="fixed inset-0 z-[52] hidden bg-on-surface/40 backdrop-blur-sm md:hidden" id="mobile-menu-backdrop" aria-hidden="true"></div>
+<div class="fixed top-24 left-4 right-4 z-[55] hidden md:hidden" id="mobile-menu" aria-hidden="true">
+<div class="bg-surface-container-lowest border border-outline-variant/25 rounded-2xl p-4 shadow-2xl shadow-on-surface/30">
+<div class="flex items-center justify-between">
+<span class="font-headline text-xl text-on-surface">Menu</span>
+<button class="w-10 h-10 rounded-full bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-high transition-colors" id="mobile-menu-close" type="button" aria-label="Close navigation menu">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="mt-4 grid gap-2">
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#destinations">Destinations</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#cruises">Cruises</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#tickets-events">Tickets</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#group-travel">Group Travel</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#journey">Our Journey</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary text-on-primary font-semibold transition-colors hover:bg-tertiary-container hover:text-on-tertiary" href="#quote">Plan Your Trip</a>
+</div>
+</div>
+</div>
 <!-- Hero Section -->
 <header class="relative min-h-screen flex items-center pt-20 overflow-hidden scroll-mt-24" id="home">
 <div class="absolute inset-0 z-0">
@@ -202,7 +227,7 @@
 <span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">favorite</span>
 </div>
 <h4 class="font-headline text-xl mb-2">Destination Weddings</h4>
-<p class="text-sm text-on-surface-variant font-body">Say 'I Do' Anywhere</p>
+<p class="text-sm text-on-surface-variant font-body">Make Your Vows Anywhere</p>
 </div>
 <div class="flex flex-col items-center text-center">
 <div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-6">
@@ -245,11 +270,29 @@
 <div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
 <span class="absolute bottom-4 left-4 text-on-primary font-bold">Cancún</span>
 </div>
-<!-- Orlando -->
-<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Orlando" data-tagline="Theme‑park thrills with sunny vibes." data-details="Perfect for families and friends looking to mix adventure, entertainment, and warm Florida days." data-images="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80">
-<img alt="Orlando" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Theme park castle in Orlando" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAeImTbsSZfaw8hjm44ETsMp-RU-sg3E3Z22Eh94wZyTqndHdWwyZkwXzQj-gS1VO6bdA3mMcGoIypUhBYBd73yyA6quGos1WMv9EC2vMNi5eiSnS0wumZegH_yQZ8XM4S2TAv1eBIwiG6SEPjGyOAXsUTij-JlAry2p_5bTmnstDpKXRbTDvTnB09IT0FmWAAIjJruCZM6Tok-vnOHrPpfIwtgZpj4RbA409aV7oTl4T5T-1bX_E3rmXirsqV48qiAAob-fqg4p8"/>
+<!-- Caribbean Islands -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Caribbean Islands" data-tagline="Island-hopping sunshine, turquoise water, and easy luxury." data-details="Explore stunning Caribbean islands with all-inclusive resorts, calm beaches, and vibrant local culture across every stop." data-images="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=900&q=80">
+<img alt="Caribbean Islands" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Palm-lined Caribbean beach with clear turquoise water" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80"/>
 <div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
-<span class="absolute bottom-4 left-4 text-on-primary font-bold">Orlando</span>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Caribbean Islands</span>
+</div>
+<!-- Punta Cana -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Punta Cana" data-tagline="Relaxed all-inclusive vibes with postcard-perfect beaches." data-details="Unwind in Punta Cana with beachfront resorts, crystal water, and effortless days made for couples, friends, and families." data-images="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=900&q=80">
+<img alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="White sand beach and palm trees in Punta Cana" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=900&q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Punta Cana</span>
+</div>
+<!-- Orlando -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Orlando + Disney" data-tagline="Theme‑park thrills and Disney magic in one trip." data-details="Perfect for families and friends who want world-famous parks, entertainment, and warm Florida days all in one getaway." data-images="https://lh3.googleusercontent.com/aida-public/AB6AXuCAeImTbsSZfaw8hjm44ETsMp-RU-sg3E3Z22Eh94wZyTqndHdWwyZkwXzQj-gS1VO6bdA3mMcGoIypUhBYBd73yyA6quGos1WMv9EC2vMNi5eiSnS0wumZegH_yQZ8XM4S2TAv1eBIwiG6SEPjGyOAXsUTij-JlAry2p_5bTmnstDpKXRbTDvTnB09IT0FmWAAIjJruCZM6Tok-vnOHrPpfIwtgZpj4RbA409aV7oTl4T5T-1bX_E3rmXirsqV48qiAAob-fqg4p8|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
+<img alt="Orlando and Disney" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Theme park fireworks and castle in Orlando" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAeImTbsSZfaw8hjm44ETsMp-RU-sg3E3Z22Eh94wZyTqndHdWwyZkwXzQj-gS1VO6bdA3mMcGoIypUhBYBd73yyA6quGos1WMv9EC2vMNi5eiSnS0wumZegH_yQZ8XM4S2TAv1eBIwiG6SEPjGyOAXsUTij-JlAry2p_5bTmnstDpKXRbTDvTnB09IT0FmWAAIjJruCZM6Tok-vnOHrPpfIwtgZpj4RbA409aV7oTl4T5T-1bX_E3rmXirsqV48qiAAob-fqg4p8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Orlando + Disney</span>
+</div>
+<!-- Grand Canyon -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Grand Canyon" data-tagline="Epic desert views and one of America’s greatest wonders." data-details="Take in sunrise overlooks, scenic trails, and unforgettable canyon vistas for an adventure-rich Southwest escape." data-images="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=900&q=80">
+<img alt="Grand Canyon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Sunset view over the Grand Canyon" src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=900&q=80"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<span class="absolute bottom-4 left-4 text-on-primary font-bold">Grand Canyon</span>
 </div>
 <!-- Italy -->
 <div class="aspect-[3/4] rounded-xl overflow-hidden relative group cursor-pointer destination-card" data-title="Italy" data-tagline="Romance, history, and unforgettable cuisine." data-details="Sip espresso in Florence, glide through Venice, and dine beneath the glow of centuries‑old streets." data-images="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80|https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80">
@@ -328,6 +371,16 @@
 </div>
 </div>
 </div>
+<div class="fixed inset-0 z-[70] hidden items-center justify-center bg-gradient-to-br from-on-surface/85 via-primary/35 to-on-surface/85 backdrop-blur-md p-4 sm:p-8" id="logo-modal" aria-hidden="true">
+<div class="relative w-full max-w-6xl">
+<button class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-11 h-11 rounded-full bg-surface text-on-surface flex items-center justify-center shadow-lg shadow-on-surface/30 ring-1 ring-outline-variant/30 hover:bg-surface-container-high transition-colors z-10" id="logo-close" type="button" aria-label="Close logo preview">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="rounded-2xl sm:rounded-3xl overflow-hidden border border-on-primary/20 shadow-2xl shadow-on-surface/40 bg-surface-container-lowest/95">
+<img alt="Walton’s Wondrous Adventures logo full view" class="w-full max-h-[88vh] object-contain p-4 sm:p-8 bg-gradient-to-br from-surface-container-lowest via-surface to-surface-container" id="logo-modal-image" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
+</div>
+</div>
+</div>
 <!-- Why Book With Us -->
 <section class="py-24 bg-surface">
 <div class="max-w-7xl mx-auto px-6">
@@ -335,7 +388,7 @@
 <h2 class="text-4xl md:text-5xl font-headline mb-4">Why Book With Us</h2>
 <p class="text-on-surface-variant max-w-2xl mx-auto">Travel is about the experience, and we ensure yours is flawless from takeoff to touchdown.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
 <span class="material-symbols-outlined text-4xl text-primary mb-4">person_heart</span>
 <h5 class="font-headline text-lg mb-2">Personalized Service</h5>
@@ -356,10 +409,31 @@
 <h5 class="font-headline text-lg mb-2">24/7 Support</h5>
 <p class="text-sm text-on-surface-variant">We're with you, wherever you are.</p>
 </div>
-<div class="p-6 bg-surface-container-lowest rounded-xl text-center border border-outline-variant/10 shadow-sm">
-<span class="material-symbols-outlined text-4xl text-primary mb-4">sell</span>
-<h5 class="font-headline text-lg mb-2">Exclusive Deals</h5>
-<p class="text-sm text-on-surface-variant">Access to rates you won't find online.</p>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface-container-high scroll-mt-24" id="tickets-events">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-5">
+<span class="text-surface-tint font-label uppercase tracking-widest text-sm font-bold">New Add-On</span>
+<h2 class="text-4xl md:text-5xl mt-3 font-headline text-on-surface">Concert & Sports Tickets</h2>
+<p class="text-on-surface-variant mt-5 leading-relaxed">Now you can add live events to your trip plan. From major concerts to big game nights, we can help pair trusted ticket options with your flights, hotels, and itinerary.</p>
+<div class="mt-8 flex flex-wrap gap-4">
+<a class="bg-primary text-on-primary px-7 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-lg shadow-primary/25" href="#quote">Add Tickets to My Trip</a>
+<a class="px-7 py-3 rounded-full font-semibold border border-outline-variant/40 hover:border-primary/40 hover:text-primary transition-colors" href="#quote">Ask for Event Options</a>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/20 shadow-md">
+<img alt="Concert and event ticket highlight" class="w-full h-56 sm:h-60 object-cover" src="Images/Post-1.1.png"/>
+</div>
+<div class="rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/20 shadow-md sm:translate-y-8">
+<img alt="Sports and entertainment ticket showcase" class="w-full h-56 sm:h-60 object-cover" src="Images/Post-2.3.3.png"/>
+</div>
+<div class="rounded-2xl overflow-hidden bg-surface-container-lowest border border-outline-variant/20 shadow-md">
+<img alt="Live event ticket promotion visual" class="w-full h-56 sm:h-60 object-cover" src="Images/Post-3.1.png"/>
+</div>
 </div>
 </div>
 </div>
@@ -522,6 +596,7 @@
 <a class="hover:text-primary transition-colors" href="#home">Home</a>
 <a class="hover:text-primary transition-colors" href="#destinations">Destinations</a>
 <a class="hover:text-primary transition-colors" href="#cruises">Cruises</a>
+<a class="hover:text-primary transition-colors" href="#tickets-events">Tickets</a>
 <a class="hover:text-primary transition-colors" href="#group-travel">Group Travel</a>
 <a class="hover:text-primary transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a>
 <a class="hover:text-primary transition-colors" href="#journey">Our Journey</a>
@@ -549,6 +624,7 @@
 <h4 class="font-bold mb-6 text-on-surface">Explore</h4>
 <ul class="space-y-4 text-sm text-on-surface-variant"><li><a class="hover:text-primary transition-colors" href="#destinations">Destinations</a></li>
 <li><a class="hover:text-primary transition-colors" href="#cruises">Cruises</a></li>
+<li><a class="hover:text-primary transition-colors" href="#tickets-events">Tickets</a></li>
 <li><a class="hover:text-primary transition-colors" href="#group-travel">Group Travel</a></li>
 <li><a class="hover:text-primary transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a></li>
 <li><a class="hover:text-primary transition-colors" href="#journey">Our Journey</a></li></ul>
@@ -604,7 +680,28 @@
       const serviceDetails = document.getElementById("service-details");
       const serviceGallery = document.getElementById("service-gallery");
       const serviceClose = document.getElementById("service-close");
+      const logoTrigger = document.getElementById("logo-trigger");
+      const logoImage = document.getElementById("logo-image");
+      const logoModal = document.getElementById("logo-modal");
+      const logoModalImage = document.getElementById("logo-modal-image");
+      const logoClose = document.getElementById("logo-close");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOpen = document.getElementById("mobile-menu-open");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+      const mobileMenuBackdrop = document.getElementById("mobile-menu-backdrop");
+      const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+      let lastFocusedElement = null;
       let destinationIndex = 0;
+
+      const syncBodyScrollLock = () => {
+        const hasOpenLogoModal = logoModal.getAttribute("aria-hidden") === "false";
+        const hasOpenMobileMenu = !mobileMenu.classList.contains("hidden");
+        if (hasOpenLogoModal || hasOpenMobileMenu) {
+          document.body.classList.add("overflow-hidden");
+        } else {
+          document.body.classList.remove("overflow-hidden");
+        }
+      };
 
       const openDestination = (card) => {
         destinationTitle.textContent = card.dataset.title || "";
@@ -708,6 +805,45 @@
         serviceModal.setAttribute("aria-hidden", "true");
       };
 
+      const openLogoModal = () => {
+        if (logoImage?.src && logoModalImage) {
+          logoModalImage.src = logoImage.src;
+        }
+        lastFocusedElement = document.activeElement;
+        logoModal.classList.remove("hidden");
+        logoModal.classList.add("flex");
+        logoModal.setAttribute("aria-hidden", "false");
+        syncBodyScrollLock();
+        logoClose.focus();
+      };
+
+      const closeLogoModal = () => {
+        logoModal.classList.add("hidden");
+        logoModal.classList.remove("flex");
+        logoModal.setAttribute("aria-hidden", "true");
+        syncBodyScrollLock();
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+          lastFocusedElement.focus();
+        }
+      };
+
+      const openMobileMenu = () => {
+        mobileMenu.classList.remove("hidden");
+        mobileMenuBackdrop.classList.remove("hidden");
+        mobileMenu.setAttribute("aria-hidden", "false");
+        mobileMenuBackdrop.setAttribute("aria-hidden", "false");
+        syncBodyScrollLock();
+        mobileMenuClose.focus();
+      };
+
+      const closeMobileMenu = () => {
+        mobileMenu.classList.add("hidden");
+        mobileMenuBackdrop.classList.add("hidden");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        mobileMenuBackdrop.setAttribute("aria-hidden", "true");
+        syncBodyScrollLock();
+      };
+
       const openDestinationAt = (index) => {
         const total = destinationCards.length;
         if (!total) {
@@ -738,7 +874,34 @@
           closeService();
         }
       });
+      logoTrigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        openLogoModal();
+      });
+      logoClose.addEventListener("click", closeLogoModal);
+      logoModal.addEventListener("click", (event) => {
+        if (event.target === logoModal) {
+          closeLogoModal();
+        }
+      });
+      mobileMenuOpen.addEventListener("click", openMobileMenu);
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+      mobileMenuBackdrop.addEventListener("click", closeMobileMenu);
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          closeMobileMenu();
+        }
+      });
       document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+          closeMobileMenu();
+        }
+        if (event.key === "Escape" && logoModal.getAttribute("aria-hidden") === "false") {
+          closeLogoModal();
+        }
         if (event.key === "Escape" && destinationModal.getAttribute("aria-hidden") === "false") {
           closeDestination();
         }
