@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walton’s Wondrous Adventures | Wonder Journal Admin</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed": "#331200",
+            "outline": "#71787f",
+            "error": "#ba1a1a",
+            "surface-tint": "#296388",
+            "on-primary-fixed-variant": "#014b6e",
+            "on-primary-fixed": "#001e2f",
+            "on-surface": "#1e1b17",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#763300",
+            "secondary-container": "#fcdab6",
+            "secondary-fixed-dim": "#e2c19e",
+            "outline-variant": "#c1c7cf",
+            "surface-container-low": "#faf2ea",
+            "on-secondary-fixed": "#291803",
+            "secondary": "#735a3e",
+            "surface-container": "#f4ede5",
+            "tertiary-fixed": "#ffdbc9",
+            "primary-fixed": "#c9e6ff",
+            "primary-container": "#004b6e",
+            "tertiary-container": "#753300",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e8e1da",
+            "on-primary-container": "#85bae3",
+            "on-surface-variant": "#41484e",
+            "inverse-primary": "#97cdf6",
+            "background": "#fff8f1",
+            "inverse-surface": "#33302b",
+            "tertiary-fixed-dim": "#ffb68d",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#e8e1da",
+            "surface-bright": "#fff8f1",
+            "tertiary": "#522200",
+            "on-background": "#1e1b17",
+            "primary-fixed-dim": "#97cdf6",
+            "secondary-fixed": "#ffddb9",
+            "primary": "#00334d",
+            "surface-container-high": "#eee7df",
+            "on-tertiary-container": "#ff9c60",
+            "error-container": "#ffdad6",
+            "surface-dim": "#e0d9d1",
+            "on-secondary-container": "#775e41",
+            "on-error-container": "#93000a",
+            "surface": "#fff8f1",
+            "inverse-on-surface": "#f7f0e8",
+            "on-secondary-fixed-variant": "#594228"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif", "serif"],
+            "body": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: "Plus Jakarta Sans", sans-serif; }
+    h1, h2, h3 { font-family: "Noto Serif", serif; }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+  <div id="login-screen" class="min-h-screen flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-lg">
+      <div class="text-center mb-8">
+        <p class="text-sm uppercase tracking-[0.22em] text-surface-tint font-semibold">Walton’s Wondrous Adventures</p>
+        <h1 class="text-4xl md:text-5xl mt-3">Wonder Journal Admin</h1>
+        <p class="text-on-surface-variant mt-3">Only verified admins can publish, update, or delete journal entries.</p>
+      </div>
+      <div class="rounded-3xl border border-outline-variant/30 bg-surface-container-lowest p-7 shadow-xl">
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="text-sm font-semibold text-on-surface-variant">Admin Email</label>
+            <input id="login-email" type="email" required class="mt-2 h-12 w-full rounded-xl border-outline-variant/40 bg-surface px-4 focus:border-primary focus:ring-primary" placeholder="waltonsblogs@admin.com">
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-on-surface-variant">Password</label>
+            <input id="login-password" type="password" required class="mt-2 h-12 w-full rounded-xl border-outline-variant/40 bg-surface px-4 focus:border-primary focus:ring-primary" placeholder="••••••••">
+          </div>
+          <p id="login-error" class="text-sm text-red-600 hidden"></p>
+          <button id="login-btn" type="submit" class="w-full h-12 rounded-xl bg-primary text-on-primary font-semibold hover:bg-primary-container transition-colors">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-dashboard" class="hidden min-h-screen">
+    <header class="sticky top-0 z-50 border-b border-outline-variant/30 bg-surface/90 backdrop-blur">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-surface-tint font-semibold">Wonder Journal</p>
+          <h2 class="text-2xl">Editorial Dashboard</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <span id="admin-email-display" class="hidden md:block text-sm text-on-surface-variant"></span>
+          <a href="index.html#wonder-journal" class="h-10 inline-flex items-center px-4 rounded-full border border-outline-variant/40 font-semibold hover:border-primary hover:text-primary transition-colors">View Site</a>
+          <button id="logout-btn" class="h-10 px-4 rounded-full bg-primary text-on-primary font-semibold hover:bg-primary-container transition-colors">Sign Out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="rounded-2xl border border-outline-variant/25 bg-surface-container-lowest p-5">
+          <p class="text-sm text-on-surface-variant">Total Blogs</p>
+          <p id="stat-total" class="text-4xl font-headline mt-2">0</p>
+        </div>
+        <div class="rounded-2xl border border-outline-variant/25 bg-surface-container-lowest p-5">
+          <p class="text-sm text-on-surface-variant">Published</p>
+          <p id="stat-published" class="text-4xl font-headline mt-2">0</p>
+        </div>
+        <div class="rounded-2xl border border-outline-variant/25 bg-surface-container-lowest p-5">
+          <p class="text-sm text-on-surface-variant">Drafts</p>
+          <p id="stat-drafts" class="text-4xl font-headline mt-2">0</p>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-outline-variant/25 bg-surface-container-lowest p-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="text-2xl">Journal Entries</h3>
+            <p id="status-banner" class="mt-1 text-sm text-on-surface-variant"></p>
+          </div>
+          <button id="new-post-btn" class="h-11 px-5 rounded-full bg-primary text-on-primary font-semibold hover:bg-primary-container transition-colors inline-flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            New Blog
+          </button>
+        </div>
+        <div id="posts-list" class="mt-6 space-y-4"></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="post-modal" class="hidden fixed inset-0 z-[80] bg-on-surface/60 px-4 py-8 overflow-y-auto">
+    <div class="min-h-full flex items-start justify-center">
+      <div class="w-full max-w-3xl rounded-3xl border border-outline-variant/35 bg-surface-container-lowest shadow-2xl">
+        <div class="px-6 py-5 border-b border-outline-variant/30 flex items-center justify-between">
+          <h3 id="modal-title" class="text-2xl">New Blog</h3>
+          <button id="close-modal-btn" class="h-10 w-10 inline-flex items-center justify-center rounded-full hover:bg-surface-container">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <form id="post-form" class="p-6 space-y-5">
+          <input id="edit-post-id" type="hidden">
+          <div>
+            <label class="text-sm font-semibold text-on-surface-variant">Title</label>
+            <input id="post-title" required class="mt-2 h-12 w-full rounded-xl border-outline-variant/40 bg-surface px-4 focus:border-primary focus:ring-primary" placeholder="10 Mistakes First-Time Cruise Travelers Make">
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-semibold text-on-surface-variant">Category</label>
+              <input id="post-category" class="mt-2 h-12 w-full rounded-xl border-outline-variant/40 bg-surface px-4 focus:border-primary focus:ring-primary" placeholder="Travel Tips">
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-on-surface-variant">Image URL</label>
+              <input id="post-image" type="url" class="mt-2 h-12 w-full rounded-xl border-outline-variant/40 bg-surface px-4 focus:border-primary focus:ring-primary" placeholder="https://images.unsplash.com/...">
+            </div>
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-on-surface-variant">Excerpt</label>
+            <textarea id="post-excerpt" rows="2" class="mt-2 w-full rounded-xl border-outline-variant/40 bg-surface px-4 py-3 focus:border-primary focus:ring-primary resize-none" placeholder="A short summary for the blog cards."></textarea>
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-on-surface-variant">Content</label>
+            <textarea id="post-content" rows="10" required class="mt-2 w-full rounded-xl border-outline-variant/40 bg-surface px-4 py-3 focus:border-primary focus:ring-primary" placeholder="Write your full travel article here..."></textarea>
+          </div>
+          <label class="inline-flex items-center gap-3">
+            <input id="post-status" type="checkbox" class="h-4 w-4 rounded border-outline-variant/40 text-primary focus:ring-primary">
+            <span id="status-label" class="text-sm font-semibold text-on-surface-variant">Draft</span>
+          </label>
+          <div class="pt-3 flex items-center gap-3">
+            <button id="save-post-btn" type="submit" class="h-11 px-6 rounded-full bg-primary text-on-primary font-semibold hover:bg-primary-container transition-colors">Save Blog</button>
+            <button id="cancel-post-btn" type="button" class="h-11 px-6 rounded-full border border-outline-variant/40 font-semibold hover:border-primary hover:text-primary transition-colors">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="hidden fixed top-6 right-6 z-[120] rounded-xl px-5 py-3 text-sm font-semibold shadow-xl"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getAuth, setPersistence, browserLocalPersistence, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+    import { getFirestore, collection, doc, getDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-functions.js";
+
+    const qs = (sel, root = document) => root.querySelector(sel);
+    const loginScreen = qs("#login-screen");
+    const adminDashboard = qs("#admin-dashboard");
+    const loginForm = qs("#login-form");
+    const loginError = qs("#login-error");
+    const loginBtn = qs("#login-btn");
+    const logoutBtn = qs("#logout-btn");
+    const adminEmailDisplay = qs("#admin-email-display");
+    const statusBanner = qs("#status-banner");
+    const postsList = qs("#posts-list");
+    const toast = qs("#toast");
+    const postModal = qs("#post-modal");
+    const postForm = qs("#post-form");
+    const modalTitle = qs("#modal-title");
+    const editPostId = qs("#edit-post-id");
+    const postTitle = qs("#post-title");
+    const postCategory = qs("#post-category");
+    const postImage = qs("#post-image");
+    const postExcerpt = qs("#post-excerpt");
+    const postContent = qs("#post-content");
+    const postStatus = qs("#post-status");
+    const statusLabel = qs("#status-label");
+    const savePostBtn = qs("#save-post-btn");
+
+    const parseEnv = (text) => text.split(/\r?\n/).reduce((acc, line) => {
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+      if (!match) return acc;
+      let value = match[2] || "";
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) value = value.slice(1, -1);
+      acc[match[1]] = value;
+      return acc;
+    }, {});
+
+    const loadEnv = async () => {
+      try {
+        const res = await fetch(".env", { cache: "no-store" });
+        if (!res.ok) throw new Error("Missing .env");
+        return parseEnv(await res.text());
+      } catch {
+        return null;
+      }
+    };
+
+    const fallbackEnv = {
+      VITE_FIREBASE_API_KEY: "AIzaSyCqAoxETs_gyv_HWVa6O1jx0nCFZfRBdQA",
+      VITE_FIREBASE_AUTH_DOMAIN: "multi-tanent-projects.firebaseapp.com",
+      VITE_FIREBASE_PROJECT_ID: "multi-tanent-projects",
+      VITE_FIREBASE_STORAGE_BUCKET: "multi-tanent-projects.firebasestorage.app",
+      VITE_FIREBASE_MESSAGING_SENDER_ID: "994746165516",
+      VITE_FIREBASE_APP_ID: "1:994746165516:web:7a2422e6ad6b0d3c41c129",
+      VITE_STORE_ID: "Waltons-Daryle-blogs"
+    };
+
+    const env = (await loadEnv()) || fallbackEnv;
+    const STORE_ID = env.VITE_STORE_ID || "";
+    const app = initializeApp({
+      apiKey: env.VITE_FIREBASE_API_KEY,
+      authDomain: env.VITE_FIREBASE_AUTH_DOMAIN,
+      projectId: env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: env.VITE_FIREBASE_APP_ID
+    });
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const functions = getFunctions(app);
+    setPersistence(auth, browserLocalPersistence).catch(() => {});
+
+    let unsubscribePosts = null;
+    let isBootstrapping = false;
+
+    const setStatus = (message, tone = "info") => {
+      statusBanner.textContent = message;
+      statusBanner.className = `mt-1 text-sm ${tone === "error" ? "text-red-600" : tone === "success" ? "text-emerald-600" : "text-on-surface-variant"}`;
+    };
+
+    const showToast = (message, isError = false) => {
+      toast.textContent = message;
+      toast.className = `fixed top-6 right-6 z-[120] rounded-xl px-5 py-3 text-sm font-semibold shadow-xl ${isError ? "bg-red-600 text-white" : "bg-primary text-on-primary"}`;
+      toast.classList.remove("hidden");
+      setTimeout(() => toast.classList.add("hidden"), 2800);
+    };
+
+    const callFunction = async (name, data = {}) => {
+      const fn = httpsCallable(functions, name);
+      const result = await fn({ ...data, storeId: STORE_ID });
+      return result.data;
+    };
+
+    const formatDate = (value) => {
+      if (!value) return "Unscheduled";
+      const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
+      if (Number.isNaN(date.getTime())) return "Unscheduled";
+      return date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    };
+
+    const escapeHtml = (text = "") => text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+    const closeModal = () => postModal.classList.add("hidden");
+
+    const openModalForNew = () => {
+      modalTitle.textContent = "New Blog";
+      editPostId.value = "";
+      postForm.reset();
+      statusLabel.textContent = "Draft";
+      postModal.classList.remove("hidden");
+    };
+
+    const openModalForEdit = async (postId) => {
+      const snap = await getDoc(doc(db, "stores", STORE_ID, "posts", postId));
+      if (!snap.exists()) {
+        showToast("Blog not found.", true);
+        return;
+      }
+      const post = snap.data();
+      modalTitle.textContent = "Edit Blog";
+      editPostId.value = postId;
+      postTitle.value = post.title || "";
+      postCategory.value = post.category || "Travel Tips";
+      postImage.value = post.imageUrl || "";
+      postExcerpt.value = post.excerpt || "";
+      postContent.value = post.content || "";
+      postStatus.checked = post.status === "published";
+      statusLabel.textContent = post.status === "published" ? "Published" : "Draft";
+      postModal.classList.remove("hidden");
+    };
+
+    const renderPosts = (posts) => {
+      qs("#stat-total").textContent = String(posts.length);
+      qs("#stat-published").textContent = String(posts.filter((post) => post.status === "published").length);
+      qs("#stat-drafts").textContent = String(posts.filter((post) => post.status !== "published").length);
+      if (!posts.length) {
+        postsList.innerHTML = `<div class="rounded-2xl border border-dashed border-outline-variant/40 bg-surface p-8 text-center text-on-surface-variant">No journal entries yet. Click New Blog to publish the first one.</div>`;
+        return;
+      }
+      postsList.innerHTML = posts.map((post) => `
+        <article class="rounded-2xl border border-outline-variant/25 bg-surface p-5">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold ${post.status === "published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}">${post.status === "published" ? "PUBLISHED" : "DRAFT"}</span>
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary">${escapeHtml(post.category || "Travel Tips")}</span>
+              </div>
+              <h4 class="text-xl font-headline">${escapeHtml(post.title || "")}</h4>
+              <p class="mt-2 text-sm text-on-surface-variant">${escapeHtml(post.excerpt || (post.content || "").slice(0, 140))}</p>
+              <p class="mt-3 text-xs text-on-surface-variant">Created ${formatDate(post.createdAt)}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button data-edit-id="${post.id}" class="h-10 px-3 rounded-lg border border-outline-variant/40 text-sm font-semibold hover:border-primary hover:text-primary transition-colors">Edit</button>
+              <button data-toggle-id="${post.id}" data-status="${post.status || "draft"}" class="h-10 px-3 rounded-lg border border-outline-variant/40 text-sm font-semibold hover:border-primary hover:text-primary transition-colors">${post.status === "published" ? "Unpublish" : "Publish"}</button>
+              <button data-delete-id="${post.id}" data-title="${escapeHtml(post.title || "")}" class="h-10 px-3 rounded-lg border border-red-200 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors">Delete</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+      postsList.querySelectorAll("[data-edit-id]").forEach((button) => button.addEventListener("click", () => openModalForEdit(button.dataset.editId)));
+      postsList.querySelectorAll("[data-toggle-id]").forEach((button) => button.addEventListener("click", async () => {
+        const postId = button.dataset.toggleId;
+        const currentStatus = button.dataset.status;
+        const newStatus = currentStatus === "published" ? "draft" : "published";
+        try {
+          await callFunction("updatePost", { postId, updates: { status: newStatus, updatedAt: new Date().toISOString() } });
+          showToast(newStatus === "published" ? "Blog published." : "Blog moved to draft.");
+        } catch (error) {
+          showToast(error?.message || "Unable to update blog status.", true);
+        }
+      }));
+      postsList.querySelectorAll("[data-delete-id]").forEach((button) => button.addEventListener("click", async () => {
+        const postId = button.dataset.deleteId;
+        const postTitleValue = button.dataset.title || "this blog";
+        if (!confirm(`Delete "${postTitleValue}"?`)) return;
+        try {
+          await callFunction("deletePost", { postId });
+          showToast("Blog deleted.");
+        } catch (error) {
+          showToast(error?.message || "Unable to delete blog.", true);
+        }
+      }));
+    };
+
+    const loadPosts = () => {
+      if (unsubscribePosts) unsubscribePosts();
+      const postsQuery = query(collection(db, "stores", STORE_ID, "posts"), orderBy("createdAt", "desc"));
+      unsubscribePosts = onSnapshot(postsQuery, (snapshot) => {
+        const posts = snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }));
+        renderPosts(posts);
+      }, () => {
+        setStatus("Could not load blogs right now.", "error");
+      });
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+      if (isBootstrapping) return;
+      if (!user) {
+        loginScreen.classList.remove("hidden");
+        adminDashboard.classList.add("hidden");
+        if (unsubscribePosts) {
+          unsubscribePosts();
+          unsubscribePosts = null;
+        }
+        return;
+      }
+      try {
+        const token = await user.getIdTokenResult(true);
+        let isAllowed = token?.claims?.storeId === STORE_ID && token?.claims?.role === "admin";
+        if (!isAllowed) {
+          try {
+            await callFunction("bootstrapAdminClaims", {});
+            await user.getIdToken(true);
+            const refreshed = await user.getIdTokenResult(true);
+            isAllowed = refreshed?.claims?.storeId === STORE_ID && refreshed?.claims?.role === "admin";
+          } catch {
+            isAllowed = false;
+          }
+        }
+        if (!isAllowed) {
+          await signOut(auth);
+          showToast("Access denied. Admin rights are required.", true);
+          return;
+        }
+        loginScreen.classList.add("hidden");
+        adminDashboard.classList.remove("hidden");
+        adminEmailDisplay.textContent = user.email || "";
+        setStatus(`Connected to store: ${STORE_ID}`, "success");
+        loadPosts();
+      } catch (error) {
+        showToast(error?.message || "Unable to verify admin access.", true);
+      }
+    });
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      loginError.classList.add("hidden");
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Signing In...";
+      try {
+        await signInWithEmailAndPassword(auth, qs("#login-email").value, qs("#login-password").value);
+      } catch (error) {
+        loginError.textContent = error?.message || "Unable to sign in.";
+        loginError.classList.remove("hidden");
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Sign In";
+      }
+    });
+
+    logoutBtn.addEventListener("click", () => signOut(auth));
+    postStatus.addEventListener("change", () => {
+      statusLabel.textContent = postStatus.checked ? "Published" : "Draft";
+    });
+    qs("#new-post-btn").addEventListener("click", openModalForNew);
+    qs("#close-modal-btn").addEventListener("click", closeModal);
+    qs("#cancel-post-btn").addEventListener("click", closeModal);
+    postModal.addEventListener("click", (event) => {
+      if (event.target === postModal) closeModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !postModal.classList.contains("hidden")) closeModal();
+    });
+
+    postForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const postData = {
+        title: postTitle.value.trim(),
+        category: postCategory.value.trim() || "Travel Tips",
+        imageUrl: postImage.value.trim() || "https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=1200&auto=format&fit=crop",
+        excerpt: postExcerpt.value.trim(),
+        content: postContent.value.trim(),
+        status: postStatus.checked ? "published" : "draft",
+        updatedAt: new Date().toISOString()
+      };
+      if (!postData.title || !postData.content) {
+        showToast("Title and content are required.", true);
+        return;
+      }
+      savePostBtn.disabled = true;
+      savePostBtn.textContent = "Saving...";
+      try {
+        const existingId = editPostId.value;
+        if (existingId) {
+          await callFunction("updatePost", { postId: existingId, updates: postData });
+          showToast("Blog updated.");
+        } else {
+          await callFunction("addPost", { postData });
+          showToast("Blog created.");
+        }
+        closeModal();
+      } catch (error) {
+        showToast(error?.message || "Unable to save blog.", true);
+      } finally {
+        savePostBtn.disabled = false;
+        savePostBtn.textContent = "Save Blog";
+      }
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
