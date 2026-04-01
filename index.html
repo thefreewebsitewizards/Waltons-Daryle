@@ -91,26 +91,32 @@
 <body class="bg-background text-on-surface selection:bg-secondary-container">
 <!-- Top Navigation Bar -->
 <nav class="fixed top-0 w-full z-50 glass-nav bg-gradient-to-r from-primary/20 via-secondary-container/60 to-tertiary-fixed/40 border-b border-outline-variant/40 shadow-xl shadow-primary/20 ring-1 ring-primary/15">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<div class="flex items-center gap-2">
+<div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-3">
+<div class="flex items-center gap-2 shrink-0">
 <a class="group text-primary font-headline text-xl font-bold tracking-tight flex items-center gap-3" href="#home" id="logo-trigger">
-<img alt="Walton’s Wondrous Adventures logo" class="h-20 w-full object-contain cursor-zoom-in transition-transform duration-200 ease-out group-hover:scale-110 group-active:scale-110 group-focus-visible:scale-110" id="logo-image" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
+<img alt="Walton’s Wondrous Adventures logo" class="h-14 w-auto object-contain cursor-zoom-in transition-transform duration-200 ease-out group-hover:scale-105 group-active:scale-105 group-focus-visible:scale-105" id="logo-image" src="Images/Walton%27s%20wondrous%20adventure%20logo.png"/>
 <!-- <span>Walton’s Wondrous Adventures</span> -->
 </a>
 </div>
-<div class="hidden md:flex items-center gap-3"><a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#destinations">Destinations</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#cruises">Cruises</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#tickets-events">Tickets</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#group-travel">Group Travel</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#weddings-honeymoons">Weddings/Honeymoons</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#journey">Our Journey</a>
-<a class="text-on-surface font-semibold px-3 py-1 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#wonder-journal">The Wonder Journal</a></div>
+<div class="hidden lg:flex items-center gap-2 flex-1 justify-center min-w-0">
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#destinations">Destinations</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#cruises">Cruises</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#tickets-events">Tickets</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#group-travel">Group Travel</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#weddings-honeymoons">Weddings/Honeymoons</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#journey">Our Journey</a>
+<a class="text-on-surface text-sm font-semibold whitespace-nowrap px-3 py-2 rounded-full bg-primary/5 hover:bg-primary/15 hover:text-primary transition-all" href="#wonder-journal">The Wonder Journal</a></div>
 <button class="md:hidden w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary/20 transition-colors" id="mobile-menu-open" type="button" aria-label="Open navigation menu">
 <span class="material-symbols-outlined">menu</span>
 </button>
-<a class="hidden md:inline-flex bg-primary text-on-primary px-8 py-3 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-xl shadow-primary/30 ring-2 ring-primary/20 hover:ring-primary/40" href="#quote">
+<div class="hidden md:flex items-center gap-2 shrink-0">
+<a class="inline-flex w-10 h-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors ring-1 ring-primary/20" href="admin.html" aria-label="Open admin settings" title="Admin Settings">
+<span class="material-symbols-outlined">settings</span>
+</a>
+<a class="inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold hover:bg-tertiary-container hover:text-on-tertiary transition-all shadow-lg shadow-primary/25 ring-2 ring-primary/20 hover:ring-primary/40 whitespace-nowrap" href="#quote">
                 Plan Your Trip
             </a>
+</div>
 </div>
 </nav>
 <div class="fixed inset-0 z-[52] hidden bg-on-surface/40 backdrop-blur-sm md:hidden" id="mobile-menu-backdrop" aria-hidden="true"></div>
@@ -130,6 +136,7 @@
 <a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#weddings-honeymoons">Weddings/Honeymoons</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#journey">Our Journey</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/5 hover:bg-primary/15 text-on-surface font-semibold transition-colors" href="#wonder-journal">The Wonder Journal</a>
+<a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-colors inline-flex items-center gap-2" href="admin.html"><span class="material-symbols-outlined text-lg">settings</span>Admin Settings</a>
 <a class="mobile-nav-link px-4 py-3 rounded-xl bg-primary text-on-primary font-semibold transition-colors hover:bg-tertiary-container hover:text-on-tertiary" href="#quote">Plan Your Trip</a>
 </div>
 </div>
